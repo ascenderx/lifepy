@@ -8,9 +8,9 @@ class Grid:
         self._cell_w = scr_w // self._w
         self._cell_h = scr_h // self._h
 
-    def compute_pixel(self, point: GridPoint) -> list:
-        px_x = point.x * self._cell_w
-        px_y = point.y * self._cell_h
+    def compute_pixel(self, x: int, y: int) -> list:
+        px_x = x * self._cell_w
+        px_y = y * self._cell_h
 
         return [px_x, px_y]
 

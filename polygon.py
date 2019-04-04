@@ -15,6 +15,9 @@ class Polygon:
             else:
                 raise KeyError(f'Unknown keyword argument "{key}"')
 
+    def __iter__(self):
+        return self._points.__iter__()
+
     @property
     def points(self) -> tuple:
         return self._points

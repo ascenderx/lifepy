@@ -24,3 +24,6 @@ class DrawHandler:
         # draw entities
         for entity in self._entities:
             poly = entity.draw()
+            pos = entity.position
+            pixels = [self._grid.compute_pixel(pt[0], pt[1]) for pt in poly]
+

@@ -62,7 +62,8 @@ class Game:
 
             # update the grid
 
-            # draw the grid
+            # draw the grid and characters
+            self._hdl_draw.update()
 
 
 if __name__ == "__main__":

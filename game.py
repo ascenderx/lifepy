@@ -15,14 +15,15 @@ class Game:
         self._screen = pygame.display.set_mode(scr_dims)
         self._grid = Grid(self._scr_w, self._scr_h, self._grid_w, self._grid_h)
 
+        # game settings
+        self._entities = []
+
         # handlers
-        self._hdl_draw = DrawHandler(self._screen, self._grid)
+        self._hdl_draw = DrawHandler(self._screen, self._grid, self._entities)
 
         # timer settings
         self._framerate = 20
         self._interval = 1000 // self._framerate
-
-        # game settings
         self._paused = False
 
     def _handle_input(self) -> bool:

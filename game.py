@@ -2,6 +2,7 @@ import pygame
 
 from draw_handler import DrawHandler
 from grid import Grid
+from wanderer import Wanderer
 
 
 class Game:
@@ -9,14 +10,14 @@ class Game:
         # display settings
         self._scr_w = 400
         self._scr_h = 400
-        self._grid_w = 100
-        self._grid_h = 100
+        self._grid_w = 20
+        self._grid_h = 20
         scr_dims = (self._scr_w, self._scr_h)
         self._screen = pygame.display.set_mode(scr_dims)
         self._grid = Grid(self._scr_w, self._scr_h, self._grid_w, self._grid_h)
 
         # game settings
-        self._entities = []
+        self._entities = [Wanderer(10, 10)]
 
         # handlers
         self._hdl_draw = DrawHandler(self._screen, self._grid, self._entities)

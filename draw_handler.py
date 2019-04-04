@@ -10,10 +10,13 @@ class DrawHandler:
         self._grid = grid
         self._entities = entities
         self._bg_color = BLACK
+        self._line_width = 2
 
         for key, value in kwargs.items():
             if key == "bg_color":
                 self._bg_color = value
+            elif key == "line_width":
+                self._line_width = value
             else:
                 raise KeyError(f'Unknown keyword argument "{key}"')
 
@@ -25,5 +28,15 @@ class DrawHandler:
         for entity in self._entities:
             poly = entity.draw()
             pos = entity.position
-            pixels = [self._grid.compute_pixel(pt[0], pt[1]) for pt in poly]
+            color = poly.color
+            pixels = [self._grid.compute_pixel(
+                pos.x + pt[0], pos.y + pt[1]
+            ) for pt in poly]
+            if poly.filled:
+                line_w = 0
+            else:
+                line_w = self._line_width
 
+            pygame.draw.polygon(self._screen, color, pixels, line_w)
+
+        pygame.display.flip()

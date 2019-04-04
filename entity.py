@@ -5,9 +5,9 @@ from polygon import Polygon
 
 
 class Entity(ABC):
-    def __init__(self, position: GridPoint):
+    def __init__(self, x: int, y: int):
         super().__init__()
-        self._position = position.clone()
+        self._position = GridPoint(x, y)
 
     @abstractmethod
     def draw(self) -> Polygon:

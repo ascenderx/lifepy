@@ -30,9 +30,11 @@ class Grid:
 
         return (0 <= x < self._w) and (0 <= y < self._h)
 
-    def wrap_point(self, point: GridPoint):
+    def wrap_point(self, point: GridPoint) -> GridPoint:
         point.x %= self._w
         point.y %= self._h
+
+        return point
 
     @property
     def width(self) -> int:

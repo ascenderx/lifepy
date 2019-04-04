@@ -1,15 +1,14 @@
-from abc import ABC, abstractmethod
-
 from grid_point import GridPoint
 from polygon import Polygon
 
 
-class Entity(ABC):
-    def __init__(self, x: int, y: int):
-        super().__init__()
-        self._position = GridPoint(x, y)
+class Entity:
+    def __init__(self, pos: GridPoint = None):
+        if pos is None:
+            self._position = GridPoint()
+        else:
+            self._position = pos.clone()
 
-    @abstractmethod
     def draw(self) -> Polygon:
         pass
 

@@ -2,6 +2,9 @@ import pygame
 
 from draw_handler import DrawHandler
 from grid import Grid
+from grid_point import GridPoint
+from moveable import Moveable
+from velocity import Velocity
 from wanderer import Wanderer
 
 
@@ -10,14 +13,16 @@ class Game:
         # display settings
         self._scr_w = 400
         self._scr_h = 400
-        self._grid_w = 20
-        self._grid_h = 20
+        self._grid_w = 50
+        self._grid_h = 50
         scr_dims = (self._scr_w, self._scr_h)
         self._screen = pygame.display.set_mode(scr_dims)
         self._grid = Grid(self._scr_w, self._scr_h, self._grid_w, self._grid_h)
 
         # game settings
-        self._entities = [Wanderer(10, 10)]
+        self._entities = [
+            Wanderer(GridPoint(10, 10), Velocity(1, 0))
+        ]
 
         # handlers
         self._hdl_draw = DrawHandler(self._screen, self._grid, self._entities)
@@ -62,6 +67,11 @@ class Game:
                 break
 
             # update the grid
+            # TODO: Wrap in an EntityHandler class
+            for entity in self._entities:
+                if isinstance(entity, Moveable):
+                    entity.move()
+                    entity.position = self._grid.wrap_point(entity.position)
 
             # draw the grid and characters
             self._hdl_draw.update()

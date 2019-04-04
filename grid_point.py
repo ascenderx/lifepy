@@ -1,22 +1,22 @@
 class GridPoint:
-    def __init__(self, x, y):
+    def __init__(self, x: int, y: int):
         self._x = x
         self._y = y
 
     @property
-    def x(self):
+    def x(self) -> int:
         return self._x
 
     @property
-    def y(self):
+    def y(self) -> int:
         return self._y
 
     @x.setter
-    def x(self, rhs):
+    def x(self, rhs: int):
         self._x = rhs
 
     @y.setter
-    def y(self, rhs):
+    def y(self, rhs: int):
         self._y = rhs
 
     def clone(self):

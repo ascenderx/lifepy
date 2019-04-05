@@ -7,13 +7,6 @@ from polygon import Polygon, SQUARE
 from velocity import Velocity
 
 
-DIR_NONE = 0
-DIR_UP = 1
-DIR_RIGHT = 2
-DIR_DOWN = 3
-DIR_LEFT = 4
-
-
 class Wanderer(Moveable):
     def __init__(self, pos: GridPoint = None, vel: Velocity = None):
         super().__init__(pos, vel)

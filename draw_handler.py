@@ -35,6 +35,9 @@ class DrawData:
     def filled(self, rhs: bool):
         self._filled = rhs
 
+    def clone(self):
+        return DrawData(self._polygon, self._color, self._filled)
+
 
 class DrawHandler:
     def __init__(self, screen: pygame.Surface, grid: Grid, entities: list, **kwargs):

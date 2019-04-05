@@ -1,10 +1,11 @@
+from random import randint
+
 import pygame
 
 from draw_handler import DrawHandler
 from grid import Grid
 from grid_point import GridPoint
 from moveable import Moveable
-from velocity import Velocity
 from wanderer import Wanderer
 
 
@@ -20,9 +21,13 @@ class Game:
         self._grid = Grid(self._scr_w, self._scr_h, self._grid_w, self._grid_h)
 
         # game settings
-        self._entities = [
-            Wanderer(GridPoint(10, 10), Velocity(1, 0))
-        ]
+        self._entities = []
+        num_wanderers = 20
+        for w in range(0, num_wanderers):
+            x = randint(0, self._grid_w - 1)
+            y = randint(0, self._grid_w - 1)
+            p = randint(0, 20)
+            self._entities.append(Wanderer(GridPoint(x, y), p))
 
         # handlers
         self._hdl_draw = DrawHandler(self._screen, self._grid, self._entities)

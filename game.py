@@ -12,8 +12,8 @@ from wanderer import Wanderer
 class Game:
     def __init__(self):
         # display settings
-        self._scr_w = 400
-        self._scr_h = 400
+        self._scr_w = 600
+        self._scr_h = 600
         self._grid_w = 50
         self._grid_h = 50
         scr_dims = (self._scr_w, self._scr_h)

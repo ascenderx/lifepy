@@ -20,6 +20,7 @@ class Game:
         scr_dims = (self._scr_w, self._scr_h)
         self._screen = pygame.display.set_mode(scr_dims)
         self._grid = Grid(self._scr_w, self._scr_h, self._grid_w, self._grid_h)
+        pygame.display.set_caption("Senora Colonies")
 
         # game settings
         self._entities = []

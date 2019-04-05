@@ -58,9 +58,11 @@ class DrawHandler:
 
         # draw entities
         for entity in self._entities:
-            poly = entity.draw()
             pos = entity.position
-            color = poly.color
+            draw_data = entity.draw()
+            poly = draw_data.polygon
+            color = draw_data.color
+            filled = draw_data.filled
 
             # get cell center
             xc = pos.x + 0.5
@@ -77,7 +79,7 @@ class DrawHandler:
                 px = self._grid.compute_pixel(xp, yp)
                 pixels.append(px)
 
-            if poly.filled:
+            if filled:
                 line_w = 0
             else:
                 line_w = self._line_width

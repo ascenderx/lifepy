@@ -2,6 +2,38 @@ import pygame
 
 from colors import *
 from grid import Grid
+from polygon import Polygon
+
+
+class DrawData:
+    def __init__(self, polygon: Polygon, color: tuple = WHITE, filled: bool = False):
+        self._polygon = polygon
+        self._color = color
+        self._filled = filled
+
+    @property
+    def polygon(self) -> Polygon:
+        return self._polygon
+
+    @property
+    def color(self) -> tuple:
+        return self._color
+
+    @property
+    def filled(self) -> bool:
+        return self._filled
+
+    @polygon.setter
+    def polygon(self, rhs: Polygon):
+        self._polygon = rhs
+
+    @color.setter
+    def color(self, rhs: tuple):
+        self._color = rhs
+
+    @filled.setter
+    def filled(self, rhs: bool):
+        self._filled = rhs
 
 
 class DrawHandler:
@@ -29,9 +61,22 @@ class DrawHandler:
             poly = entity.draw()
             pos = entity.position
             color = poly.color
-            pixels = [self._grid.compute_pixel(
-                pos.x + pt[0], pos.y + pt[1]
-            ) for pt in poly]
+
+            # get cell center
+            xc = pos.x + 0.5
+            yc = pos.y + 0.5
+
+            # get pixel points
+            pixels = []
+            for pt in poly:
+                # compute poly points within cell
+                xp = xc + 0.5 * pt[0]
+                yp = yc + 0.5 * pt[1]
+
+                # scale to display
+                px = self._grid.compute_pixel(xp, yp)
+                pixels.append(px)
+
             if poly.filled:
                 line_w = 0
             else:

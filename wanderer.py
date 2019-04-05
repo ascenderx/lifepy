@@ -4,7 +4,7 @@ from colors import RED
 from grid_point import GridPoint
 from moveable import Moveable
 from polygon import Polygon, SQUARE
-from velocity import Velocity
+from velocity import Velocity, DIR_UP, DIR_RIGHT, DIR_DOWN, DIR_LEFT
 
 
 class Wanderer(Moveable):

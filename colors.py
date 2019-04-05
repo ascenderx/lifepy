@@ -36,9 +36,9 @@ PASTEL_MAGENTA = (255, 127, 255)
 
 
 def int_to_rgb(color: int) -> tuple:
-    r = (color >> 16) % 0x10
-    g = (color >> 8) % 0x10
-    b = (color >> 0) % 0x10
+    r = (color >> 16) % 0x100
+    g = (color >> 8) % 0x100
+    b = (color >> 0) % 0x100
 
     return r, g, b
 

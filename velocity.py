@@ -30,6 +30,15 @@ class Velocity:
     def dy(self, rhs: int):
         self._dy = rhs
 
+    def __eq__(self, rhs):
+        if is_list(rhs):
+            return rhs[0] == self._dx and rhs[1] == self._dy
+        else:
+            return rhs.dx == self._dx and rhs.dy == self._dy
+
+    def __neg__(self):
+        return Velocity(-self._dx, -self._dy)
+
     def __add__(self, rhs):
         dx = self._dx
         dy = self._dy

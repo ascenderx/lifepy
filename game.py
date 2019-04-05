@@ -6,6 +6,7 @@ from draw_handler import DrawHandler
 from entity_handler import EntityHandler
 from grid import Grid
 from grid_point import GridPoint
+from plant import Plant
 from wanderer import Wanderer
 
 
@@ -25,9 +26,14 @@ class Game:
         num_wanderers = 20
         for w in range(0, num_wanderers):
             x = randint(0, self._grid_w - 1)
-            y = randint(0, self._grid_w - 1)
-            p = randint(0, 20)
-            self._entities.append(Wanderer(GridPoint(x, y), p))
+            y = randint(0, self._grid_h - 1)
+            prob = randint(0, 20)
+            self._entities.append(Wanderer(GridPoint(x, y), prob))
+        num_plants = 30
+        for p in range(0, num_plants):
+            x = randint(0, self._grid_w - 1)
+            y = randint(0, self._grid_h - 1)
+            self._entities.append(Plant(GridPoint(x, y)))
 
         # handlers
         self._hdl_entities = EntityHandler(self._grid, self._entities)

@@ -1,5 +1,5 @@
+from draw_handler import DrawData
 from grid_point import GridPoint
-from polygon import Polygon
 
 
 class Entity:
@@ -9,7 +9,7 @@ class Entity:
         else:
             self._position = pos.clone()
 
-    def draw(self) -> Polygon:
+    def draw(self) -> DrawData:
         pass
 
     @property
